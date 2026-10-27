@@ -1,0 +1,481 @@
+/* ==========================================================
+   Perspective - Hoja de estilos (tema oscuro, similar al blog original)
+   Secciones:
+   1. Variables
+   2. Base
+   3. Estructura general
+   4. Menú superior
+   5. Cabecera
+   6. Contenido (artículos)
+   7. Página de inicio y tarjetas
+   8. Barra lateral
+   9. Pie de página
+   10. Responsive
+   ========================================================== */
+
+/* 1. Variables ------------------------------------------- */
+:root {
+  --bg: #000;
+  --panel: rgba(20, 20, 20, 0.73);
+  --panel-header: rgba(17, 17, 17, 0.39);
+  --panel-nav: #151515;
+  --panel-soft: #222;
+  --border: #444;
+  --text: #fff;
+  --muted: #c4c4c4;
+  --accent: #07acec;
+  --accent-hover: #4d90fe;
+  --font-body: "Roboto", "Open Sans", Arial, sans-serif;
+  --font-title: "Open Sans", "Roboto", Arial, sans-serif;
+}
+
+/* 2. Base ------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  /* Fondo del blog original: descarga la imagen, guárdala en images/fondo.jpg
+     y quita los comentarios de la línea siguiente.
+  background: #000 url("../images/fondo.jpg") no-repeat fixed center top; */
+  background: radial-gradient(ellipse at top, #16202b 0%, #07090c 60%, #000 100%) fixed;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; border: 0; }
+
+a { color: var(--accent); text-decoration: none; transition: color .3s; }
+a:hover { color: var(--accent-hover); }
+
+p { margin: 0 0 1em; }
+
+ul, ol { margin: .5em 0 1em 1.6em; padding: 0; }
+li { margin: .4em 0; }
+
+/* 3. Estructura general ---------------------------------- */
+#wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  min-height: 100vh;
+}
+
+#content-wrapper {
+  display: flex;
+  gap: 24px;
+  padding: 0 18px;
+}
+
+#post-wrapper { flex: 1 1 100%; min-width: 0; margin: 20px 0; }
+
+/* 4. Menú superior --------------------------------------- */
+#nav {
+  background: var(--panel-nav);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-toggle {
+  display: none;
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--panel-nav);
+  color: #fff;
+  border: 0;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list li { margin: 0; }
+
+.nav-list a {
+  display: block;
+  padding: 0 14px;
+  line-height: 46px;
+  color: #f0f0f0;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-list a:hover,
+.nav-list a.active {
+  background: var(--panel-soft);
+  border-bottom-color: var(--accent);
+  color: #fff;
+}
+
+/* 5. Cabecera -------------------------------------------- */
+#header-wrapper {
+  padding: 22px 18px;
+  background: var(--panel-header);
+  border-bottom: 1px solid var(--border);
+}
+
+#header-wrapper .title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+#header-wrapper .title a { color: #fff; }
+#header-wrapper .title a:hover { color: var(--accent); }
+
+#header-wrapper .description {
+  margin: .5em 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-family: var(--font-title);
+}
+
+/* 6. Contenido (artículos) ------------------------------- */
+.breadcrumbs {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 0 0 10px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.breadcrumbs a { color: #fff; }
+.breadcrumbs a:hover { text-decoration: underline; }
+
+.post { padding: 10px; }
+
+.post-title {
+  margin: 0 0 22px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+.post-body { line-height: 1.7; }
+
+.post-body h2 {
+  margin: 1.8em 0 .6em;
+  padding: 10px;
+  background: #212121;
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.post-body h2:first-child { margin-top: 0; }
+
+.post-body h3 {
+  margin: 1.4em 0 .4em;
+  color: #9fdcf7;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.post-body a { text-decoration: underline; word-break: break-word; }
+
+.post-body figure {
+  margin: 1.2em auto;
+  text-align: center;
+}
+
+.post-body figure img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+}
+
+.lead { color: var(--muted); }
+
+/* 7. Inicio y tarjetas ----------------------------------- */
+.hero { margin: 0 0 20px; }
+.hero img { width: 100%; max-width: 640px; border-radius: 4px; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.card {
+  display: block;
+  padding: 16px;
+  background: var(--panel-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none !important;
+  transition: border-color .3s, transform .3s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-2px); color: #fff; }
+
+.card h2 {
+  margin: 0 0 6px;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: 17px;
+}
+
+.card p { margin: 0; font-size: 13px; color: var(--muted); }
+
+.game-area {
+  min-height: 260px;
+  padding: 16px;
+  background: var(--panel-soft);
+  border: 1px dashed var(--border);
+}
+
+/* 9. Pie de página --------------------------------------- */
+#footer-wrapper {
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(17, 17, 17, 0.84);
+  border-top: 1px solid var(--border);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: none;
+  padding: 6px 12px;
+  background: #111;
+  color: #fff;
+  border: 1px solid var(--border);
+  font-size: 20px;
+  cursor: pointer;
+}
+.back-to-top:hover { background: var(--accent); border-color: var(--accent); }
+.back-to-top.visible { display: block; }
+
+/* 10. Responsive ----------------------------------------- */
+@media (max-width: 768px) {
+  #content-wrapper { flex-direction: column; gap: 0; padding: 0 10px; }
+  .nav-toggle { display: block; }
+  .nav-list { display: none; flex-direction: column; }
+  .nav-list.open { display: flex; }
+  .nav-list a { border-bottom: 1px solid var(--border); }
+  .post-title { font-size: 19px; }
+}
+
+/* 11. Juegos (componentes compartidos, prefijo g-) -------- */
+.game-area { border-style: solid; min-height: 320px; }
+
+.g-head {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 8px; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  font-size: 13px; color: var(--muted);
+}
+.g-dots { display: flex; gap: 6px; }
+.g-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--muted); background: transparent; }
+.g-dot.done { background: var(--accent); border-color: var(--accent); }
+.g-dot.now { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(7,172,236,.3); }
+
+.g-title { margin: 0 0 8px; font-size: 21px; line-height: 1.3; outline: none; }
+.g-sub { margin: 0 0 14px; color: var(--muted); }
+
+.g-callout {
+  margin: 0 0 16px; padding: 12px 14px; background: #1a2a33;
+  border-left: 3px solid var(--accent); font-size: 14px;
+}
+.g-callout strong { color: #9fdcf7; }
+.g-callout.soft { background: #262626; border-left-color: #888; color: var(--muted); }
+
+.g-btn {
+  display: inline-block; min-height: 44px; padding: 10px 20px; margin: 4px 8px 4px 0;
+  background: var(--accent); color: #00131c; border: 2px solid var(--accent);
+  font: inherit; font-weight: 700; cursor: pointer; border-radius: 3px;
+}
+.g-btn:hover { background: #3cc3f5; border-color: #3cc3f5; }
+.g-btn.ghost { background: transparent; color: #fff; border-color: var(--border); }
+.g-btn.ghost:hover { border-color: var(--accent); color: #fff; }
+.g-btn:disabled { opacity: .45; cursor: not-allowed; }
+.g-btn:focus-visible, .g-opt:focus-visible, .g-check input:focus-visible + span,
+.g-note textarea:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+.g-check { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; cursor: pointer; }
+.g-check input { width: 20px; height: 20px; accent-color: var(--accent); }
+
+.g-timer { margin: 0 0 14px; }
+.g-timer-text { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+.g-bar { height: 10px; background: #333; border-radius: 5px; overflow: hidden; }
+.g-bar > span { display: block; height: 100%; width: 100%; background: var(--accent); }
+
+.g-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin: 0 0 16px; }
+.g-tile {
+  padding: 14px 8px; text-align: center; background: #1b1b1b;
+  border: 1px solid var(--border); border-radius: 6px;
+}
+.g-tile .e { display: block; font-size: 46px; line-height: 1.1; }
+.g-tile .n { display: block; margin-top: 6px; font-size: 13px; }
+
+.g-zones { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 0 0 16px; }
+.g-zone { padding: 10px; background: #161d22; border: 1px dashed #4a6270; border-radius: 6px; }
+.g-zone h3 { margin: 0 0 10px; font-size: 14px; text-align: center; }
+.g-zone .g-grid { margin: 0; grid-template-columns: repeat(2, 1fr); }
+
+.g-q { margin: 0 0 14px; font-size: 18px; font-weight: 700; outline: none; }
+.g-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 0 0 14px; }
+.g-opt {
+  min-height: 72px; padding: 10px 8px; background: #1b1b1b; color: #fff; font: inherit;
+  text-align: center; border: 2px solid var(--border); border-radius: 6px; cursor: pointer;
+}
+.g-opt:hover:not(:disabled) { border-color: var(--accent); }
+.g-opt .e { display: block; font-size: 30px; line-height: 1.1; }
+.g-opt .tag { display: block; margin-top: 4px; font-size: 12px; font-weight: 700; }
+.g-opt.correct { border-color: #4cc38a; background: #17301f; }
+.g-opt.wrong { border-color: #e0a04a; background: #33260f; }
+.g-opt.dim { opacity: .4; }
+.g-opt:disabled { cursor: default; }
+
+.g-feedback { margin: 0 0 14px; padding: 12px 14px; background: #222; border-left: 3px solid var(--accent); }
+.g-feedback p { margin: 0 0 6px; }
+.g-feedback p:last-child { margin: 0; }
+
+.g-note { margin: 0 0 16px; }
+.g-note label, .g-note .lbl { display: block; margin: 0 0 6px; font-weight: 700; font-size: 14px; }
+.g-note textarea {
+  width: 100%; min-height: 70px; padding: 10px; background: #fff8d6; color: #222;
+  font: inherit; border: 2px solid #d8c75a; border-radius: 4px; resize: vertical;
+}
+.g-note textarea[readonly] { background: #f3ecc0; }
+
+.g-score { width: 100%; border-collapse: collapse; margin: 0 0 16px; font-size: 14px; }
+.g-score th, .g-score td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+.g-score td:last-child, .g-score th:last-child { text-align: right; white-space: nowrap; }
+
+.g-takeaways { margin: 0 0 16px 1.2em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .g-bar > span { transition: none !important; }
+  .card, .g-btn { transition: none; }
+}
+@media (max-width: 480px) {
+  .g-tile .e { font-size: 38px; }
+  .g-btn { width: 100%; margin-right: 0; }
+}
+
+/* 12. Escenario 2D y audio ---------------------------------- */
+.g-stage { margin: 0 0 12px; text-align: center; }
+.g-stage canvas {
+  display: block; margin: 0 auto; max-width: 100%;
+  background: #000; border: 2px solid var(--border);
+  image-rendering: pixelated; image-rendering: crisp-edges;
+}
+.px { image-rendering: pixelated; image-rendering: crisp-edges; display: block; margin: 0 auto; }
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.g-audiobar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 13px; }
+.g-mini {
+  min-height: 40px; padding: 6px 12px; background: #1b1b1b; color: #fff; font: inherit;
+  border: 1px solid var(--border); border-radius: 3px; cursor: pointer;
+}
+.g-mini:hover:not(:disabled) { border-color: var(--accent); }
+.g-mini:disabled { opacity: .45; cursor: not-allowed; }
+.g-mini:focus-visible, .g-vol input:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.g-vol { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+.g-opt img.px { margin-bottom: 2px; }
+.g-askitem { margin: 0 0 8px; }
+
+/* 13. Autismo: medidor sensorial y apoyos ------------------- */
+.a-hud { margin: 0 0 14px; }
+.a-meter-wrap { margin: 0 0 10px; }
+.a-meter-lbl { display: block; font-size: 13px; color: var(--muted); margin: 0 0 4px; }
+.a-meter { position: relative; height: 16px; background: #333; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.a-zone { position: absolute; top: 0; bottom: 0; background: rgba(76, 195, 138, .45); }
+.a-mark { position: absolute; top: -2px; bottom: -2px; width: 6px; margin-left: -3px; background: #fff; border: 1px solid #000; transition: left .25s linear; }
+.a-estado { margin: 6px 0 0; font-size: 13px; min-height: 1.4em; }
+.a-tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+.a-tool {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; cursor: pointer;
+  background: #161d22; color: #fff; border: 2px solid var(--border); border-radius: 6px; font: inherit; font-size: 13px;
+}
+.a-tool:hover { border-color: var(--accent); }
+.a-tool[aria-pressed="true"] { border-color: #4cc38a; background: #17301f; }
+.a-tool:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.a-ico { display: inline-block; background-repeat: no-repeat; background-position: 0 0; image-rendering: pixelated; flex: none; }
+.a-opt .a-ico, .g-opt .a-ico { margin: 0 auto 4px; }
+.a-horario, .a-plan { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.a-pl { font-size: 13px; margin-right: 4px; }
+.a-flecha { color: var(--muted); font-size: 20px; }
+#a-opts { transition: filter .4s; }
+
+/* 14. Depresión: diálogo -------------------------------------- */
+.d-con { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 13px; color: var(--muted); }
+.d-con .g-bar { flex: 1; }
+.d-box { margin: 0 0 12px; padding: 12px 14px; background: #0b0f1a; border: 2px solid #f5f5f5; border-radius: 4px; }
+.d-box.d-yo { border-color: var(--accent); }
+.d-name { margin: 0 0 4px; color: #07acec; font-weight: 700; font-size: 14px; }
+.d-text { margin: 0; font-size: 17px; line-height: 1.5; outline: none; }
+.d-ops { display: grid; gap: 8px; margin: 0 0 14px; }
+.d-op { width: 100%; text-align: left; margin: 0; }
+.d-tabla td:last-child, .d-tabla th:last-child { text-align: left; white-space: normal; }
+@media (prefers-reduced-motion: reduce) { .a-mark { transition: none; } #a-opts { transition: none; } }
+
+/* 15. Pantalla completa (API nativa o ampliación por CSS) ----- */
+body.g-bloq { overflow: hidden; }
+#juego.g-full {
+  position: fixed; inset: 0; z-index: 9999; margin: 0; border: 0; border-radius: 0;
+  background: #0e1116; padding: 12px 18px 28px; overflow-y: auto; min-height: 0;
+}
+#juego.g-full .g-audiobar, #juego.g-full #g-panel { max-width: 920px; margin-left: auto; margin-right: auto; }
+#juego.g-full #g-panel { font-size: 17px; }
+#juego.g-full .g-stage canvas { border-color: #35405a; }
+@media (max-width: 480px) { .g-audiobar .g-mini { flex: 1 1 45%; } }
+
+/* Pantalla completa en monitores anchos: escena grande a la izquierda, texto y botones a la derecha */
+@media (min-width: 900px) and (min-aspect-ratio: 4/3) {
+  #juego.g-full {
+    display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(340px, 1fr);
+    grid-template-rows: auto 1fr; column-gap: 24px; align-content: start; overflow: hidden;
+  }
+  #juego.g-full .g-audiobar { grid-column: 1 / -1; max-width: none; margin: 0 0 10px; }
+  #juego.g-full .g-stage { grid-column: 1; grid-row: 2; align-self: center; margin: 0; }
+  #juego.g-full #g-panel { grid-column: 2; grid-row: 2; max-width: none; margin: 0; overflow-y: auto; max-height: calc(100vh - 96px); padding-right: 6px; }
+}
+
+.d-box.d-pens { border-style: dashed; border-color: #8aa0d0; } .d-box.d-pens .d-text { font-style: italic; color: #cdd8f0; }
+
+/* 15. Alzheimer: recuerdos de los objetos ------------------------ */
+.a-recs { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
+.a-recs li { display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: #1b1b1b; border-left: 3px solid #f0cf7a; font-size: 14px; }
+.a-recs li img.px { flex: none; margin: 0; }
+.a-recs.lost li { border-left-color: #666; color: var(--muted); }
+.a-recs.lost li img.px { opacity: .35; filter: grayscale(1); }
+.a-rechud { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.a-rechud-t { font-size: 13px; color: var(--muted); margin-right: 4px; }
+.a-rechud img.px { margin: 0; }
+.a-rechud img.lost { opacity: .3; filter: grayscale(1); }
+p.g-callout { margin: 0 0 14px; }
+
+/* 16. Autismo: el texto sufre con la sobrecarga ------------------- */
+.tr { position: relative; display: inline; animation: tr-tiembla .16s linear infinite alternate; }
+@keyframes tr-tiembla { from { top: calc(var(--tr, 1px) * -1); left: calc(var(--tr, 1px) * -0.6); } to { top: var(--tr, 1px); left: calc(var(--tr, 1px) * 0.6); } }
+.tw-alto { text-shadow: 2px 0 rgba(224,122,122,.55), -2px 0 rgba(120,170,255,.5); }
+.tw-temblor { display: inline-block; animation: tr-tiembla .16s linear infinite alternate; }
+@media (prefers-reduced-motion: reduce) { .tr, .tw-temblor { animation: none; } }
+.a-muestra { display: flex; align-items: center; gap: 8px; margin: 0; outline: none; }
+.a-muestra .a-ico { margin: 0; } .a-muestra { justify-content: flex-start; }

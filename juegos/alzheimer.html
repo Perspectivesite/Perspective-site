@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Un domingo en casa de Carmen: juego de Alzheimer - Perspective</title>
+  <meta name="description" content="Un domingo en casa de Carmen: vive un día de una persona con Alzheimer y su nieta, entre memoria, decisiones y acompañamiento.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+<div id="wrapper">
+
+  <!-- Barra superior / menú -->
+  <nav id="nav" aria-label="Principal">
+    <button class="nav-toggle" aria-expanded="false" aria-label="Abrir menú">&#9776; Menú</button>
+    <ul class="nav-list">
+        <li><a href="../index.html" aria-label="Inicio">Inicio</a></li>
+        <li><a href="../alzheimer.html" aria-label="Alzheimer">𝕬𝖑𝖟𝖍𝖊𝖎𝖒𝖊𝖗</a></li>
+        <li><a href="../depresion.html" aria-label="Depresión">𝕯𝖊𝖕𝖗𝖊𝖘𝖎ó𝖓</a></li>
+        <li><a href="../autismo.html" aria-label="Autismo">𝕬𝖚𝖙𝖎𝖘𝖒𝖔</a></li>
+        <li><a href="../experiencias.html" aria-label="Experiencias Virtuales">𝕰𝖝𝖕𝖊𝖗𝖎𝖊𝖓𝖈𝖎𝖆𝖘 𝖁𝖎𝖗𝖙𝖚𝖆𝖑𝖊𝖘</a></li>
+    </ul>
+  </nav>
+
+  <!-- Cabecera -->
+  <header id="header-wrapper">
+    <p class="title"><a href="../index.html" aria-label="Perspective">𝓟𝓔𝓡𝓢𝓟𝓔𝓒𝓣𝓘𝓥𝓔</a></p>
+    <p class="description">Mentes diferentes, mismas historias</p>
+  </header>
+
+  <div id="content-wrapper">
+    <main id="post-wrapper">
+      <div class="breadcrumbs"><a href="../index.html">Inicio</a> &rsaquo; <a href="../experiencias.html">Experiencias Virtuales</a> &rsaquo; <span>Un domingo en casa de Carmen</span></div>
+      <article class="post">
+        <h1 class="post-title">Un domingo en casa de Carmen</h1>
+        <div class="post-body">
+          <p class="lead">Vive un día de Carmen y de su nieta Valeria: memoria, decisiones y acompañamiento. Un juego para comprender qué pasa por dentro y cómo acompañar.</p>
+          <!-- Contenedor del juego (motor 2D en js/engine/motor.js, lógica en js/juego-alzheimer.js) -->
+          <div id="juego" class="game-area">
+            <noscript><p>Este juego necesita JavaScript activado para funcionar.</p></noscript>
+          </div>
+          <p><a href="../experiencias.html">&larr; Volver a Experiencias Virtuales</a></p>
+        </div>
+      </article>
+    </main>
+
+  </div>
+
+  <!-- Pie de página -->
+  <footer id="footer-wrapper">
+    Copyright &copy; <span id="year">2026</span> 𝓟𝓔𝓡𝓢𝓟𝓔𝓒𝓣𝓘𝓥𝓔
+  </footer>
+</div>
+<button class="back-to-top" aria-label="Volver arriba">&#8963;</button>
+<script src="../js/engine/motor.js" defer></script>
+<script src="../js/juego-alzheimer.js" defer></script>
+</body>
+</html>
